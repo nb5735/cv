@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="format-detection" content="telephone=no,address=no,date=no">
+<meta http-equiv="x-rim-auto-match" content="none">
+<title>Jongsu Kim — Curriculum Vitae</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;overflow:hidden;background:#2C2520}
+body{font-family:Georgia,"Times New Roman",serif}
+.screen{position:absolute;top:0;left:0;width:100%;height:100%;transition:transform .35s ease,opacity .35s ease}
+.screen-cover{display:flex;flex-direction:column;align-items:center;background:linear-gradient(160deg,#2C2520 0%,#3A3028 40%,#2C2520 100%);z-index:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0}
+.screen-cover::before,.screen-cover::after{content:'';flex:1 1 0;min-height:2vh}
+.screen-cover::-webkit-scrollbar{display:none}
+.cover-badge{border:1.5px solid #C8A96E;padding:6px 22px 5px;text-align:center;opacity:0;transition:opacity .5s ease}
+.cover-badge.visible{opacity:1}
+.cover-badge-sub{font-size:clamp(7px,2vw,10px);color:#C8A96E;letter-spacing:.45em;text-transform:uppercase;display:block;line-height:1.3}
+.cover-badge-main{font-size:clamp(9px,2.8vw,13px);color:#C8A96E;letter-spacing:.55em;text-transform:uppercase;display:block;line-height:1.4}
+.cover-name{color:#C8A96E;font-size:clamp(28px,9vw,48px);font-style:italic;letter-spacing:.06em;margin-top:4vh;opacity:0;white-space:nowrap;transition:opacity .6s ease}
+.cover-name.visible{opacity:1}
+.cover-email{color:#9A8A72;font-size:clamp(11px,3.2vw,15px);font-style:italic;letter-spacing:.12em;margin-top:2.5vh;opacity:0;text-decoration:none;transition:opacity .6s ease}
+.cover-email.visible{opacity:1}
+.cover-email::selection{background:rgba(200,169,110,.3);color:#C8A96E}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.cover-email-loading{color:#9A8A72;font-size:clamp(10px,2.8vw,14px);font-style:italic;letter-spacing:.12em;margin-top:2.5vh;opacity:0;transition:opacity .6s ease;animation:blink 1.4s ease-in-out infinite}
+.cover-email-loading.visible{opacity:1}
+.cover-retry-btn{background:none;border:1.5px solid #C8A96E;border-radius:6px;color:#C8A96E;font-size:clamp(10px,2.8vw,14px);font-style:italic;letter-spacing:.08em;padding:6px 18px;margin-top:2.5vh;cursor:pointer;opacity:0;transition:opacity .6s ease}
+.cover-retry-btn.visible{opacity:1}
+.cover-retry-btn:active{background:#C8A96E;color:#2C2520}
+.cover-nav{display:flex;flex-direction:column;align-items:center;margin-top:5vh}
+.cover-nav-link{font-size:clamp(13px,3.8vw,17px);color:#C8A96E;letter-spacing:.06em;text-decoration:none;cursor:pointer;padding:2px 0;transition:color .2s,opacity .5s ease;opacity:0}
+.cover-nav-link.visible{opacity:1}
+.cover-nav-link:active{color:#E8D09E}
+.cover-nav-dot{width:3px;height:3px;border-radius:50%;background:#6B5A3E;margin:7px 0;opacity:0;transition:opacity .5s ease}
+.cover-nav-dot.visible{opacity:1}
+.toc-btn{display:none}
+.screen-toc{background:linear-gradient(160deg,#2C2520 0%,#3A3028 40%,#2C2520 100%);z-index:60;transform:translateY(100%);opacity:0;display:flex;flex-direction:column}
+.screen-toc.open{transform:translateY(0);opacity:1}
+.toc-header{padding:24px 24px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(200,169,110,.15)}
+.toc-title{font-size:clamp(11px,3vw,14px);color:#9A8A72;letter-spacing:.3em;font-style:italic;text-transform:uppercase}
+.toc-close{background:none;border:1.5px solid #C8A96E;border-radius:4px;color:#C8A96E;font-size:20px;cursor:pointer;padding:2px 10px;line-height:1}
+.toc-list{flex:1;overflow-y:auto;padding:8px 0;-webkit-overflow-scrolling:touch}
+.toc-list::-webkit-scrollbar{display:none}
+.toc-item{display:flex;align-items:center;padding:14px 24px;cursor:pointer;transition:background .2s}
+.toc-item:active{background:rgba(200,169,110,.08)}
+.toc-item.active{background:rgba(200,169,110,.06)}
+.toc-abbr{width:32px;height:24px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:bold;font-style:italic;color:#C8A96E;letter-spacing:.02em;flex-shrink:0}
+.toc-dot{width:4px;height:4px;border-radius:50%;background:#6B5A3E;margin:0 12px;flex-shrink:0}
+.toc-item.active .toc-dot{background:#C8A96E}
+.toc-label{font-size:clamp(13px,3.6vw,16px);color:#9A8A72;letter-spacing:.04em}
+.toc-item.active .toc-label{color:#C8A96E}
+.screen-content{background:#FAF6F0;z-index:40;transform:translateX(100%);opacity:0;display:flex;flex-direction:column}
+.screen-content.open{transform:translateX(0);opacity:1}
+.content-top{height:auto;display:flex;align-items:center;justify-content:space-between;padding:18px 20px 14px;border-bottom:1px solid #E0D5C4;flex-shrink:0;background:#FAF6F0;position:sticky;top:0;z-index:5}
+.content-section-name{flex:1;font-size:clamp(16px,4.8vw,22px);font-weight:bold;color:#2C2520;letter-spacing:.06em}
+.content-close{background:none;border:1.5px solid #C8A96E;border-radius:4px;font-size:clamp(11px,2.8vw,13px);color:#C8A96E;cursor:pointer;letter-spacing:.12em;padding:6px 14px;font-weight:bold}
+.content-scroll{flex:1;overflow-y:auto;padding:8vw 7vw 10vh;-webkit-overflow-scrolling:touch}
+.content-scroll::-webkit-scrollbar{display:none}
+.content-scroll .section-title{font-size:clamp(14px,4.2vw,20px);font-weight:bold;color:#2C2520;margin-bottom:3vh;letter-spacing:.06em;padding-bottom:1vh}
+.content-scroll .section-title:first-child{margin-top:2vh}
+.content-scroll .section-title:not(:first-child){margin-top:6vh}
+.content-scroll .content-item{font-size:clamp(12px,3.4vw,16px);color:#4A3E32;line-height:1.9;margin-bottom:1.2vh}
+.edu-entry{margin-bottom:3vh;padding-bottom:3vh;border-bottom:1px solid #E0D5C4}
+.edu-entry:last-child{border-bottom:none}
+.edu-school-line{font-size:clamp(13px,3.6vw,17px);color:#2C2520;margin-bottom:4px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap}
+.edu-school-name{font-weight:bold}
+.edu-period{font-size:clamp(11px,2.8vw,14px);color:#7A6E5E;font-style:italic;white-space:nowrap;margin-left:auto}
+.edu-detail{font-size:clamp(11px,3vw,15px);color:#4A3E32;line-height:1.8;padding-left:4vw;margin-top:6px}
+.edu-detail a{color:#2C2520;text-decoration:none}
+.edu-detail .abstract-link{display:block;margin-top:6px;text-align:right}
+.edu-detail .ext-icon{display:inline-block;margin-left:.3em;font-size:clamp(10px,2.6vw,13px);vertical-align:middle;opacity:.7}
+.content-bullet{font-size:clamp(12px,3.4vw,16px);color:#2C2520;line-height:1.9;margin-bottom:3vh;padding-left:2.5vw;text-indent:-2.5vw}
+.content-bullet::before{content:'· ';font-weight:bold}
+.content-hanging{font-size:clamp(11px,3.1vw,15px);color:#2C2520;line-height:2;margin-bottom:3vh;padding-bottom:3vh;padding-left:10vw;text-indent:-10vw;border-bottom:1px solid #E0D5C4}
+.content-hanging:last-child{border-bottom:none}
+.disc-entry{margin-bottom:4vh;padding-bottom:4vh;border-bottom:1px solid #E0D5C4}
+.disc-entry:last-child{border-bottom:none}
+.disc-title-line{font-size:clamp(13px,3.6vw,17px);color:#2C2520;line-height:1.8}
+.disc-title{font-weight:bold;display:block}
+.disc-date{font-size:clamp(11px,2.8vw,14px);color:#7A6E5E;font-style:italic;display:block;text-align:right}
+.disc-desc{font-size:clamp(11px,3vw,15px);color:#4A3E32;line-height:1.8;padding-left:4vw;margin-top:6px}
+.prof-entry{margin-bottom:3vh;padding-bottom:3vh;border-bottom:1px solid #E0D5C4}
+.prof-entry:last-child{border-bottom:none}
+.prof-org{font-size:clamp(13px,3.6vw,17px);font-weight:bold;color:#2C2520;line-height:1.6}
+.prof-detail{font-size:clamp(11px,3vw,15px);color:#4A3E32;line-height:1.8;padding-left:4vw;margin-top:6px}
+.prof-role-title{font-weight:bold;font-style:italic}
+.prof-period{display:block;color:#7A6E5E;font-style:italic;margin-top:3px;text-align:right}
+.prof-period-only{font-size:clamp(11px,3vw,15px);color:#7A6E5E;font-style:italic;margin-top:4px;text-align:right}
+.award-entry{margin-bottom:2.5vh;padding-bottom:2.5vh;border-bottom:1px solid #E0D5C4}
+.award-entry:last-child{border-bottom:none}
+.award-title{font-size:clamp(13px,3.6vw,17px);font-weight:bold;color:#2C2520;line-height:1.6}
+.award-detail{font-size:clamp(11px,3vw,15px);color:#4A3E32;line-height:1.8;padding-left:4vw;margin-top:4px}
+.award-date{display:block;color:#7A6E5E;font-style:italic;margin-top:3px;text-align:right}
+.cert-entry{margin-bottom:2.5vh;padding-bottom:2.5vh;border-bottom:1px solid #E0D5C4}
+.cert-entry:last-child{border-bottom:none}
+.cert-name{font-size:clamp(13px,3.6vw,17px);font-weight:bold;color:#2C2520;line-height:1.6}
+.cert-detail{font-size:clamp(11px,3vw,15px);color:#4A3E32;line-height:1.8;padding-left:4vw;margin-top:4px}
+.cert-date{display:block;color:#7A6E5E;font-style:italic;margin-top:3px;text-align:right}
+.teach-block{margin-bottom:3vh}
+.teach-block+.teach-block{padding-top:3vh;border-top:1px solid #E0D5C4}
+.teach-org-line{font-size:clamp(13px,3.6vw,17px);color:#2C2520}
+.teach-org-name{font-weight:bold}
+.teach-period{display:block;font-size:clamp(11px,2.8vw,14px);color:#7A6E5E;font-style:italic;margin-top:3px;text-align:right}
+.teach-role{font-size:clamp(11px,3vw,15px);font-style:italic;font-weight:bold;color:#2C2520;padding-left:4vw;margin-top:1.5vh}
+.teach-sub{font-size:clamp(11px,3vw,15px);color:#4A3E32;padding-left:6vw;margin-top:1vh}
+.teach-sub::before{content:'· '}
+.teach-sub .teach-period{display:block;padding-left:0;margin-top:2px;text-align:right}
+.pub-entry{margin-bottom:2.5vh;padding-bottom:2.5vh;border-bottom:1px solid #E0D5C4}
+.pub-entry:last-child{border-bottom:none}
+.pub-text{font-size:clamp(11px,3.1vw,15px);color:#2C2520;line-height:2;padding-left:10vw;text-indent:-10vw}
+.pub-text a{color:#5A4632;text-decoration:none;word-break:break-all}
+.pub-abstract{text-align:right;margin-top:4px}
+.pub-abstract a{font-size:clamp(10px,2.8vw,14px);color:#7A6E5E;text-decoration:none;font-weight:bold;font-style:italic}
+.pub-abstract .ext-icon{vertical-align:middle;margin-left:.2em;opacity:.7}
+.cv-download-btn{display:inline-block;padding:.9em 2.5em;font-size:clamp(12px,3.4vw,16px);font-style:italic;color:#2C2520;background:linear-gradient(180deg,rgba(200,169,110,.2) 0%,rgba(200,169,110,.08) 100%);border:1.5px solid #C8A96E;border-radius:5px;text-decoration:none;letter-spacing:.1em;cursor:pointer}
+.cv-download-btn:active{transform:translateY(1px)}
+.sitemap-container{display:flex;flex-direction:column;gap:clamp(12px,3vh,24px);margin-top:1vh}
+.sitemap-row{display:flex;align-items:center}
+.sitemap-label{width:clamp(28px,8vw,38px);height:clamp(22px,6vw,30px);display:flex;align-items:center;justify-content:center;background:#2C2520;border-radius:3px;font-size:clamp(9px,2.5vw,12px);font-weight:bold;font-style:italic;color:#C8A96E;flex-shrink:0}
+.sitemap-line{width:clamp(16px,5vw,32px);height:1px;background:linear-gradient(to right,#C8A96E,#E0D5C4);position:relative;flex-shrink:0}
+.sitemap-line::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:4px;height:4px;background:#C8A96E;border-radius:50%}
+.sitemap-name{font-size:clamp(12px,3.4vw,16px);color:#2C2520;padding-left:clamp(6px,2vw,10px)}
+.section-loading{display:flex;flex-direction:column;align-items:center;padding:20vh 0}
+.section-loading-spinner{width:24px;height:24px;border:2px solid #E0D5C4;border-top:2px solid #C8A96E;border-radius:50%;animation:spin 1s linear infinite}
+.section-loading-text{font-size:11px;color:#9A8A72;margin-top:12px;font-style:italic;letter-spacing:.08em}
+@keyframes spin{to{transform:rotate(360deg)}}
+.modal-overlay{display:none;position:fixed;inset:0;z-index:200;flex-direction:column}
+.modal-overlay.open{display:flex;animation:modalFadeIn .25s ease both}
+@keyframes modalFadeIn{from{opacity:0}to{opacity:1}}
+.modal-backdrop{position:absolute;inset:0;background:rgba(20,16,12,.55)}
+.modal-container{position:relative;z-index:1;width:100%;height:100%;background:#FAF6F0;display:flex;flex-direction:column}
+.modal-header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #E0D5C4;flex-shrink:0;background:#FAF6F0}
+.modal-title{font-size:clamp(12px,3.2vw,15px);font-weight:bold;color:#2C2520;letter-spacing:.04em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
+.modal-close{background:none;border:1.5px solid #C8A96E;border-radius:6px;color:#C8A96E;font-size:clamp(10px,2.6vw,12px);font-weight:bold;padding:5px 10px;cursor:pointer;letter-spacing:.08em;white-space:nowrap}
+.modal-close:active{background:#C8A96E;color:#FAF6F0}
+.modal-zoom-btn{padding:5px 10px;display:flex;align-items:center;justify-content:center;font-size:clamp(13px,3.6vw,16px);font-weight:bold;line-height:1}
+.modal-zoom-level{font-size:clamp(9px,2.4vw,11px);color:#9A8A72;font-style:italic;letter-spacing:.04em;min-width:clamp(30px,9vw,40px);text-align:center;white-space:nowrap}
+.modal-body{flex:1;min-height:0;position:relative;background:#E8E8E8;overflow:hidden}
+.modal-body-scroll{position:absolute;inset:0;overflow:auto;-webkit-overflow-scrolling:touch}
+.modal-body-scroll::-webkit-scrollbar{display:none}
+.modal-body iframe{display:block;border:none;transform-origin:0 0;opacity:0;transition:opacity .3s ease;background:#fff}
+.modal-body iframe.loaded{opacity:1}
+.modal-loading{position:absolute;inset:0;background:#E8E8E8;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:2;transition:opacity .4s ease}
+.modal-loading.hidden{opacity:0;pointer-events:none}
+.modal-loading p{font-size:12px;color:#7A6E5E;margin-top:12px;font-style:italic}
+</style>
+</head>
+<body>
+<div class="screen screen-cover" id="screenCover">
+  <div class="cover-badge" id="coverBadge"><span class="cover-badge-sub">Curriculum</span><span class="cover-badge-main">V I T E A</span></div>
+  <div class="cover-name" id="coverName">Jongsu Kim</div>
+  <div class="cover-email-loading" id="coverEmailLoading">Loading...</div>
+  <button class="cover-retry-btn" id="coverRetryBtn" style="display:none">Loading Failed. Retry?</button>
+  <a class="cover-email" id="coverEmail" href="mailto:nicobass5735@gmail.com" style="display:none">nicobass5735@gmail.com</a>
+  <div class="cover-nav" id="coverNav"></div>
+</div>
+<div class="screen screen-content" id="screenContent">
+  <div class="content-top"><span class="content-section-name" id="contentSectionName"></span><button class="content-close" id="contentClose">CLOSE</button></div>
+  <div class="content-scroll" id="contentScroll"></div>
+</div>
+<div class="screen screen-toc" id="screenToc">
+  <div class="toc-header"><span class="toc-title">Contents</span><button class="toc-close" id="tocClose">&times;</button></div>
+  <div class="toc-list" id="tocList"></div>
+</div>
+<button class="toc-btn" id="tocBtn"><svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="14" y2="17"/></svg></button>
+<div class="modal-overlay" id="abstractModal">
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <div class="modal-container">
+    <div class="modal-header">
+      <span class="modal-title" id="modalTitleEl">Abstract</span>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <button class="modal-close modal-zoom-btn" id="modalZoomOut" title="축소">−</button>
+        <span class="modal-zoom-level" id="modalZoomLevel">100%</span>
+        <button class="modal-close modal-zoom-btn" id="modalZoomIn" title="확대">+</button>
+        <button class="modal-close modal-zoom-btn" id="modalClose">CLOSE</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-loading" id="modalLoading"><div class="section-loading-spinner"></div><p>Loading...</p></div>
+      <div class="modal-body-scroll" id="modalBodyScroll">
+        <iframe id="modalIframe" src="" referrerpolicy="no-referrer"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+var GAS_URL='https://script.google.com/macros/s/AKfycbwOI0P1oMCyJYfnTkzsZFfpMcDxGIwQvnHFlSfSyeB1-o08-Xmd1crX-wXE107HfY4L/exec',
+coverBadge=document.getElementById('coverBadge'),coverName=document.getElementById('coverName'),
+coverEmail=document.getElementById('coverEmail'),coverNav=document.getElementById('coverNav'),
+screenContent=document.getElementById('screenContent'),screenToc=document.getElementById('screenToc'),
+contentScroll=document.getElementById('contentScroll'),tocBtn=document.getElementById('tocBtn'),
+modalOverlay=document.getElementById('abstractModal'),modalIframe=document.getElementById('modalIframe'),
+currentPage='cover',cache={},dataReady=false,pubData=[],
+ALL_SHEETS=['01_ongoing_research','02_ongoing_study','03_education','04_reaserch_interest','05_publications','06_presentations','07_discussion_participant','08_teaching_experience-1','09_teaching_experience-2','10_certicication','11_profession_experience','12_awards_and_scholarships','15_cv_link'],
+SECTIONS=[
+{page:'cover',abbr:'C',label:'Cover'},
+{page:'introduction',abbr:'I',label:'Introduction'},
+{page:'education',abbr:'E',label:'Education'},
+{page:'research-interests',abbr:'RI',label:'Research Interests'},
+{page:'publications',abbr:'P',label:'Publications'},
+{page:'presentations',abbr:'P',label:'Presentations'},
+{page:'discussion',abbr:'DP',label:'Discussion Participant'},
+{page:'teaching',abbr:'TE',label:'Teaching Experience'},
+{page:'professional',abbr:'PE',label:'Professional Experiences'},
+{page:'certification',abbr:'CT',label:'Certification'},
+{page:'awards',abbr:'AS',label:'Awards & Scholarships'},
+{page:'ongoing-research',abbr:'OR',label:'Ongoing Research & Study',shortLabel:'Ongoing...'},
+{page:'sitemap',abbr:'MAP',label:'Site Map'}
+],
+_currentDocUrl='',_zoomBaseScale=1,_zoomIdx=5,
+_zoomSteps=[.5,.6,.7,.8,.9,1,1.1,1.2,1.4,1.6,1.8,2];
+
+function escapeHtml(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function filterByDsp(rows){return rows.filter(function(r){return String(r.dsp)!=='0'})}
+function sortDesc(rows){rows.sort(function(a,b){return(b.no_||b.no_num||0)-(a.no_||a.no_num||0)});return rows}
+function loadLocalCache(){try{var d=localStorage.getItem('cv_data');if(d){var p=JSON.parse(d);if(Date.now()-p.ts<3600000){for(var k in p.d)cache[k]=p.d[k];return true}}}catch(e){}return false}
+function saveLocalCache(){try{localStorage.setItem('cv_data',JSON.stringify({ts:Date.now(),d:cache}))}catch(e){}}
+var hadLocalCache=loadLocalCache();
+function fetchAllSheets(){return fetch(GAS_URL+'?sheets='+encodeURIComponent(ALL_SHEETS.join(','))).then(function(r){return r.json()}).then(function(j){for(var k in j)cache[k]=j[k];saveLocalCache()})}
+var dataFetchPromise=hadLocalCache?Promise.resolve():fetchAllSheets();
+
+async function fetchFromGAS(names){
+  var needed=names.filter(function(s){return!(s in cache)});
+  if(needed.length){var r=await fetch(GAS_URL+'?sheets='+encodeURIComponent(needed.join(',')));if(!r.ok)throw new Error('Network');var j=await r.json();for(var k in j)cache[k]=j[k]}
+  var out={};names.forEach(function(s){out[s]=cache[s]||[]});return out;
+}
+
+function showLoading(){contentScroll.innerHTML='<div class="section-loading"><div class="section-loading-spinner"></div><div class="section-loading-text">Loading...</div></div>'}
+function hasCached(n){for(var i=0;i<n.length;i++){if(!(n[i] in cache))return false}return true}
+function updateTocActive(){document.querySelectorAll('.toc-item').forEach(function(i){i.classList.toggle('active',i.dataset.page===currentPage)})}
+
+function navigateTo(page){
+  screenToc.classList.remove('open');
+  if(page==='cover'){screenContent.classList.remove('open');currentPage='cover';updateTocActive();return}
+  currentPage=page;updateTocActive();
+  var sec=SECTIONS.find(function(s){return s.page===page});
+  document.getElementById('contentSectionName').textContent=sec?(sec.shortLabel||sec.label):'';
+  contentScroll.scrollTop=0;screenContent.classList.add('open');
+  if(renderMap[page])renderMap[page]();
+}
+
+function showNavItems(){
+  var items=coverNav.children,delay=0;
+  for(var i=0;i<items.length;i++){
+    (function(el,d){setTimeout(function(){el.classList.add('visible')},d)})(items[i],delay);
+    delay+=items[i].classList.contains('cover-nav-dot')?40:100;
+  }
+}
+
+function showRetryBtn(){
+  document.getElementById('coverEmailLoading').style.display='none';
+  var b=document.getElementById('coverRetryBtn');b.style.display='';b.classList.add('visible');
+}
+
+function retryLoad(){
+  var b=document.getElementById('coverRetryBtn');b.style.display='none';b.classList.remove('visible');
+  var el=document.getElementById('coverEmailLoading');el.style.display='';el.classList.add('visible');
+  dataFetchPromise=fetchAllSheets();
+  dataFetchPromise.then(function(){
+    dataReady=true;
+    document.getElementById('coverEmailLoading').style.display='none';
+    coverEmail.style.display='';coverEmail.classList.add('visible');
+    showNavItems();
+  }).catch(showRetryBtn);
+}
+
+document.getElementById('coverRetryBtn').addEventListener('click',retryLoad);
+
+(function(){
+  var nav=SECTIONS.filter(function(s){return s.page!=='cover'&&s.page!=='sitemap'});
+  nav.forEach(function(s,i){
+    var a=document.createElement('span');a.className='cover-nav-link';a.textContent=s.label;
+    a.addEventListener('click',function(){navigateTo(s.page)});coverNav.appendChild(a);
+    if(i<nav.length-1){var d=document.createElement('span');d.className='cover-nav-dot';coverNav.appendChild(d)}
+  });
+  var list=document.getElementById('tocList');
+  SECTIONS.forEach(function(s){
+    var it=document.createElement('div');it.className='toc-item'+(s.page==='cover'?' active':'');it.dataset.page=s.page;
+    it.innerHTML='<span class="toc-abbr">'+s.abbr+'</span><span class="toc-dot"></span><span class="toc-label">'+s.label+'</span>';
+    it.addEventListener('click',function(){navigateTo(s.page)});list.appendChild(it);
+  });
+})();
+
+tocBtn.addEventListener('click',function(){screenToc.classList.add('open');updateTocActive()});
+document.getElementById('tocClose').addEventListener('click',function(){screenToc.classList.remove('open')});
+document.getElementById('contentClose').addEventListener('click',function(){screenContent.classList.remove('open');currentPage='cover';updateTocActive()});
+
+(async function preload(){
+  try{
+    coverBadge.classList.add('visible');
+    await new Promise(function(r){setTimeout(r,300)});
+    coverName.classList.add('visible');
+    document.getElementById('coverEmailLoading').classList.add('visible');
+    await dataFetchPromise;dataReady=true;
+    if(!hadLocalCache)saveLocalCache();
+    document.getElementById('coverEmailLoading').style.display='none';
+    coverEmail.style.display='';coverEmail.classList.add('visible');
+    showNavItems();
+    if(hadLocalCache)fetchAllSheets();
+  }catch(e){showRetryBtn()}
+})();
+
+async function renderIntroduction(){
+  var h='<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:60vh;padding:0 4vw;"><div class="content-item" style="line-height:2.2;">This website serves as <br><b>Jongsu Kim\'s Curriculum Vitae (CV)</b>, <br>covering everything from educational background to current research.<br><br>You can view each section from the menu, or view the full CV document below.</div>';
+  var cvUrl='';try{var d=await fetchFromGAS(['15_cv_link']);var rows=d['15_cv_link']||[];if(rows.length>0)cvUrl=rows[0].url||rows[0].URL||rows[0].link||''}catch(e){}
+  h+='<div style="margin-top:6vh;text-align:center;"><a href="#" class="cv-download-btn" id="cvDlBtn" data-url="'+escapeHtml(cvUrl)+'">See CV Docs</a></div></div>';
+  contentScroll.innerHTML=h;
+  var btn=document.getElementById('cvDlBtn');
+  if(btn)btn.addEventListener('click',function(e){e.preventDefault();var u=btn.getAttribute('data-url');if(u){document.getElementById('modalTitleEl').textContent='Curriculum Vitae';openModal(u,true)}});
+}
+
+async function renderOngoingResearch(){
+  if(!hasCached(['01_ongoing_research','02_ongoing_study']))showLoading();
+  try{var d=await fetchFromGAS(['01_ongoing_research','02_ongoing_study']),h='';
+  filterByDsp(d['01_ongoing_research']||[]).forEach(function(r,i){if(!i)h+='<div class="section-title">Research</div>';h+='<div class="content-item">'+escapeHtml(r.content)+'</div>'});
+  filterByDsp(d['02_ongoing_study']||[]).forEach(function(r,i){if(!i)h+='<div class="section-title">Study</div>';h+='<div class="content-item">'+escapeHtml(r.content)+'</div>'});
+  contentScroll.innerHTML=h}catch(e){}
+}
+
+async function renderEducation(){
+  if(!hasCached(['03_education']))showLoading();
+  try{var d=await fetchFromGAS(['03_education']),rows=filterByDsp(d['03_education']||[]),h='';
+  rows.sort(function(a,b){return b.no_num-a.no_num});
+  rows.forEach(function(r){
+    var school=escapeHtml(r.school_name||''),region=escapeHtml(r.region||''),period=escapeHtml(r.period||''),degree=r['degree/major']?escapeHtml(r['degree/major']):'',thesis=r.thesis?escapeHtml(r.thesis):'',advisor=r.advisor?escapeHtml(r.advisor):'',link=r.abstrat_link||'';
+    h+='<div class="edu-entry">';
+    if(degree){
+      h+='<div class="edu-school-line"><span><span class="edu-school-name">'+school+'</span>'+(region?', '+region:'')+'</span></div><div class="edu-detail"><div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;"><span>'+degree+'</span><span class="edu-period">'+period+'</span></div>';
+      if(thesis)h+='<div>Thesis: '+thesis+'</div>';
+      if(advisor&&link)h+='<div>Advisor: '+advisor+' <a href="#" class="abstract-link" data-url="'+escapeHtml(link)+'"><b><i>Abstract</i> <span class="ext-icon">&#8599;</span></b></a></div>';
+      else if(advisor)h+='<div>Advisor: '+advisor+'</div>';
+      else if(link)h+='<div><a href="#" class="abstract-link" data-url="'+escapeHtml(link)+'"><b><i>Abstract</i> <span class="ext-icon">&#8599;</span></b></a></div>';
+      h+='</div>';
+    }else{h+='<div class="edu-school-line"><span><span class="edu-school-name">'+school+'</span>, '+region+'</span><span class="edu-period">'+period+'</span></div>'}
+    h+='</div>';
+  });contentScroll.innerHTML=h}catch(e){}
+}
+
+async function renderResearchInterests(){if(!hasCached(['04_reaserch_interest']))showLoading();try{var d=await fetchFromGAS(['04_reaserch_interest']),h='';filterByDsp(d['04_reaserch_interest']||[]).forEach(function(r){h+='<div class="content-bullet">'+escapeHtml(r.content)+'</div>'});contentScroll.innerHTML=h}catch(e){}}
+
+async function renderPublications(){if(!hasCached(['05_publications']))showLoading();try{if(!pubData.length){var d=await fetchFromGAS(['05_publications']);pubData=filterByDsp(sortDesc(d['05_publications']||[]))}var h='';pubData.forEach(function(r){var t=escapeHtml(r.content||'').replace(/(.*\.\s)([A-Z][a-zA-Z\s&]+?),\s(\d+)(\(\d+\))/,'$1<i>$2, $3</i>$4');h+='<div class="pub-entry"><div class="pub-text">'+t;if(r.doi)h+=' <a href="'+(r.doi_link?escapeHtml(r.doi_link):'#')+'" target="_blank">'+escapeHtml(r.doi)+'</a>';h+='</div>';if(r.abstrat_link)h+='<div class="pub-abstract"><a href="#" class="abstract-link" data-url="'+escapeHtml(r.abstrat_link)+'"><b><i>Abstract</i> <span class="ext-icon">&#8599;</span></b></a></div>';h+='</div>'});contentScroll.innerHTML=h}catch(e){}}
+
+async function renderPresentations(){if(!hasCached(['06_presentations']))showLoading();try{var d=await fetchFromGAS(['06_presentations']),rows=filterByDsp(sortDesc(d['06_presentations']||[])),h='';rows.forEach(function(r){h+='<div class="content-hanging">'+escapeHtml(r.content||'').replace(/^(.*?\)\.\s)(.*?)(\.\s)/,'$1<i>$2</i>$3')+'</div>'});contentScroll.innerHTML=h}catch(e){}}
+
+async function renderDiscussion(){if(!hasCached(['07_discussion_participant']))showLoading();try{var d=await fetchFromGAS(['07_discussion_participant']),rows=filterByDsp(sortDesc(d['07_discussion_participant']||[])),h='';rows.forEach(function(r){h+='<div class="disc-entry"><div class="disc-title-line"><span class="disc-title">'+escapeHtml(r.content||'')+'</span>';if(r['data/region'])h+='<span class="disc-date">('+escapeHtml(r['data/region'])+')</span>';h+='</div>';if(r.deciption)h+='<div class="disc-desc">'+escapeHtml(r.deciption)+'</div>';h+='</div>'});contentScroll.innerHTML=h}catch(e){}}
+
+async function renderTeaching(){if(!hasCached(['08_teaching_experience-1','09_teaching_experience-2']))showLoading();try{var d=await fetchFromGAS(['08_teaching_experience-1','09_teaching_experience-2']),h='';var t1=filterByDsp(d['08_teaching_experience-1']||[]);if(!t1.error){var m1=t1.filter(function(r){return r.category==1}),s1=t1.filter(function(r){return r.category==2});m1.forEach(function(m){h+='<div class="teach-block"><div class="teach-org-line"><span class="teach-org-name">'+escapeHtml(m.organization||m['organization/subject/role']||'')+'</span>';if(m.period)h+='<span class="teach-period">'+escapeHtml(m.period)+'</span>';h+='</div>';var role=m['subject/role']||'';if(role)h+='<div class="teach-role">'+escapeHtml(role)+'</div>';s1.filter(function(s){return s.upper_level==m.no_||s.upper_level==(m.no_num||m.no_)}).sort(function(a,b){return(b.no_||b.no_num||0)-(a.no_||a.no_num||0)}).forEach(function(c){h+='<div class="teach-sub"><span>'+escapeHtml(c.organization||c['organization/subject/role']||'')+'</span>';if(c.period)h+='<span class="teach-period">'+escapeHtml(c.period)+'</span>';h+='</div>'});h+='</div>'})}var t2=filterByDsp(d['09_teaching_experience-2']||[]);if(!t2.error){var m2=t2.filter(function(r){return r.category==1}),s2=t2.filter(function(r){return r.category==2});m2.forEach(function(m){h+='<div class="teach-block"><div class="teach-org-line"><span class="teach-org-name">'+escapeHtml(m['organization/subject/role']||m.organization||'')+'</span>';if(m.period)h+='<span class="teach-period">'+escapeHtml(m.period)+'</span>';h+='</div>';var cr='';s2.filter(function(s){return s.upper_level==m.no_||s.upper_level==(m.no_num||m.no_)}).sort(function(a,b){return(a.no_||a.no_num||0)-(b.no_||b.no_num||0)}).forEach(function(c){var rl=c['organization/subject/role']||'';if(rl!==cr){cr=rl;h+='<div class="teach-role">'+escapeHtml(rl)+'</div>'}h+='<div class="teach-sub"><span>'+escapeHtml(c.course_name||'')+'</span>';if(c.period)h+='<span class="teach-period">'+escapeHtml(c.period)+'</span>';h+='</div>'});h+='</div>'})}contentScroll.innerHTML=h}catch(e){}}
+
+async function renderProfessional(){if(!hasCached(['11_profession_experience']))showLoading();try{var d=await fetchFromGAS(['11_profession_experience']),rows=filterByDsp(sortDesc(d['11_profession_experience']||[])),h='';rows.forEach(function(r){var org=escapeHtml(r.organization||''),rd=r['role/description']||'',period=escapeHtml(r.period||'');h+='<div class="prof-entry"><div class="prof-org">'+org+'</div>';if(rd){var ci=rd.indexOf(':'),rh=ci>-1?'<span class="prof-role-title">'+escapeHtml(rd.substring(0,ci))+'</span>: '+escapeHtml(rd.substring(ci+1).trim()):'<span class="prof-role-title">'+escapeHtml(rd)+'</span>';h+='<div class="prof-detail"><div>'+rh+'</div><span class="prof-period">'+period+'</span></div>'}else if(period)h+='<div class="prof-period-only">'+period+'</div>';h+='</div>'});contentScroll.innerHTML=h}catch(e){}}
+
+async function renderCertification(){if(!hasCached(['10_certicication']))showLoading();try{var d=await fetchFromGAS(['10_certicication']),rows=filterByDsp(sortDesc(d['10_certicication']||[])),h='';rows.forEach(function(r){h+='<div class="cert-entry"><div class="cert-name">'+escapeHtml(r.name||'')+'</div><div class="cert-detail"><span>'+escapeHtml(r.description||'')+'</span><span class="cert-date">'+escapeHtml(r.date||'')+'</span></div></div>'});contentScroll.innerHTML=h}catch(e){}}
+
+async function renderAwards(){if(!hasCached(['12_awards_and_scholarships']))showLoading();try{var d=await fetchFromGAS(['12_awards_and_scholarships']),rows=filterByDsp(sortDesc(d['12_awards_and_scholarships']||[])),h='';rows.forEach(function(r){h+='<div class="award-entry"><div class="award-title">'+escapeHtml(r.awards_and_scholarships||'')+'</div><div class="award-detail"><span>'+escapeHtml(r.organization||'')+'</span><span class="award-date">'+escapeHtml(r.date||'')+'</span></div></div>'});contentScroll.innerHTML=h}catch(e){}}
+
+function renderSitemap(){var tabs=SECTIONS.filter(function(s){return s.page!=='sitemap'}),h='<div class="sitemap-container">';tabs.forEach(function(t){h+='<div class="sitemap-row"><div class="sitemap-label">'+t.abbr+'</div><div class="sitemap-line"></div><div class="sitemap-name">'+t.label+'</div></div>'});h+='</div>';contentScroll.innerHTML=h}
+
+var renderMap={introduction:renderIntroduction,education:renderEducation,'research-interests':renderResearchInterests,publications:function(){pubData=[];renderPublications()},presentations:renderPresentations,discussion:renderDiscussion,teaching:renderTeaching,professional:renderProfessional,certification:renderCertification,awards:renderAwards,'ongoing-research':renderOngoingResearch,sitemap:renderSitemap};
+
+document.getElementById('modalClose').addEventListener('click',closeModal);
+document.getElementById('modalBackdrop').addEventListener('click',closeModal);
+
+document.getElementById('modalZoomIn').addEventListener('click',function(){if(_zoomIdx<_zoomSteps.length-1){_zoomIdx++;applyZoom()}});
+document.getElementById('modalZoomOut').addEventListener('click',function(){if(_zoomIdx>0){_zoomIdx--;applyZoom()}});
+
+function docBase(url){try{var m=url.match(/(https:\/\/docs\.google\.com\/document\/d\/[^/]+)/);if(m)return m[1]}catch(e){}return null}
+function toDocPreview(url){var b=docBase(url);return b?b+'/preview':url.replace(/\/(edit|preview).*$/,'/preview')}
+function toDocPdf(url){var b=docBase(url);return b?b+'/export?format=pdf&attachment=false':url.replace(/\/preview.*$/,'/export?format=pdf')}
+function toDocPdfEmbed(url){var pdf=toDocPdf(url);return'https://docs.google.com/gview?embedded=true&url='+encodeURIComponent(pdf)}
+
+function applyZoom(){
+  var s=_zoomBaseScale*_zoomSteps[_zoomIdx],body=document.querySelector('.modal-body'),mh=body.clientHeight||(window.innerHeight-50);
+  modalIframe.style.width='1040px';modalIframe.style.height=Math.ceil(mh/s)+'px';modalIframe.style.transform='scale('+s+')';
+  document.getElementById('modalZoomLevel').textContent=Math.round(_zoomSteps[_zoomIdx]*100)+'%';
+  var scr=document.getElementById('modalBodyScroll');if(scr){scr.scrollTop=0;scr.scrollLeft=0}
+}
+
+function openModal(url,asPdf){
+  if(!url)return;
+  _currentDocUrl=url;_zoomIdx=5;
+  var l=document.getElementById('modalLoading');l.classList.remove('hidden');
+  modalIframe.classList.remove('loaded');modalOverlay.classList.add('open');
+  var body=document.querySelector('.modal-body'),mw=body.clientWidth||window.innerWidth,mh=body.clientHeight||(window.innerHeight-50);
+  _zoomBaseScale=mw/1040;
+  modalIframe.style.width='1040px';modalIframe.style.height=Math.ceil(mh/_zoomBaseScale)+'px';modalIframe.style.transform='scale('+_zoomBaseScale+')';
+  document.getElementById('modalZoomLevel').textContent='100%';
+  modalIframe.onload=function(){l.classList.add('hidden');modalIframe.classList.add('loaded')};
+  modalIframe.src=asPdf?toDocPdfEmbed(url):toDocPreview(url);
+}
+
+function closeModal(){
+  modalOverlay.classList.remove('open');modalIframe.classList.remove('loaded');modalIframe.src='';
+  _currentDocUrl='';_zoomIdx=5;
+  document.getElementById('modalZoomLevel').textContent='100%';
+  document.getElementById('modalLoading').classList.remove('hidden');
+  document.getElementById('modalTitleEl').textContent='Abstract';
+  var scr=document.getElementById('modalBodyScroll');if(scr){scr.scrollTop=0;scr.scrollLeft=0}
+}
+
+contentScroll.addEventListener('click',function(e){var link=e.target.closest('.abstract-link');if(link){e.preventDefault();openModal(link.getAttribute('data-url'))}});
+</script>
+</body>
+</html>
